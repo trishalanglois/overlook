@@ -1,6 +1,24 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+@import 'normalize';
+@import 'variables';
+@import 'media-queries'; //actually do the media queries in a separate doc
 
 body {
-  background-color: $primary-background;
+  background-image: url('../images/flowers.png');
+  background-size: 100%;
+}
+
+h1 {
+  font-family: $accent-font;
+  font-size: 3em;
+  color: $main-light-color;
+}
+
+h2 {
+  font-family: $main-font;
+  font-weight: lighter;
+  color: $main-light-color;
+}
+
+button {
+  font-family: $main-font;
 }
