@@ -4,21 +4,43 @@
 
 body {
   background-image: url('../images/flowers.png');
-  background-size: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  // background-repeat: no-repeat;
+  // text-align: center;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
   font-family: $accent-font;
   font-size: 3em;
   color: $main-light-color;
+  font-size: 8em;
+  margin: .1em;
 }
 
 h2 {
   font-family: $main-font;
   font-weight: lighter;
   color: $main-light-color;
+  font-size: 2.5em;
 }
 
 button {
   font-family: $main-font;
+  font-size: 1.2em;
+  width: 50%;
+  height: 3em;
+  margin: .5em;
+  border-radius: 5px;
 }
