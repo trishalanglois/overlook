@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <title>Webpack Starter Kit</title>
+    <title>The Lucid Hotel</title>
+    <link href="https://fonts.googleapis.com/css?family=Alex+Brush|Roboto+Condensed:300,400,700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <h1>Webpack Starter Kit</h1>
-
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
+    <div class='main-container'>
+      <h1>The Lucid Hotel</h1>
+      <h2>WHERE DREAMS COME TRUE</h2>
+      <div id='main-button-container'>
+        <button class='nav-to-login'>GUESTS</button>
+        <button class='nav-to-login'>STAFF</button>
+      </div>
+      <div id='style-line'></div>
+      <div id='main-input' style = 'display: none'>
+        <label for='username'>Username:</label>
+        <input type='text' class='username' name='username' required
+        minlength='7' maxlength='10' size='15'>
+        <label for='password'>Password:</label>
+        <input type='password' class='password' name='password' required
+        minlength='5' maxlength='12' size='15'>
+      </div>
+    </div>
     <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
   </body>
 </html>

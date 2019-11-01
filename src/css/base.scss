@@ -1,6 +1,79 @@
-/* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+@import 'normalize';
+@import 'variables';
+@import 'media-queries'; //actually do the media queries in a separate doc
 
 body {
-  background-color: $primary-background;
+  background-image: url('../images/flowers.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: $main-font;
+  // background-repeat: no-repeat;
+  // text-align: center;
 }
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  font-family: $accent-font;
+  font-size: 3em;
+  color: $main-light-color;
+  font-size: 8em;
+  margin: .1em;
+}
+
+h2 {
+  font-weight: lighter;
+  color: $main-light-color;
+  font-size: 2.5em;
+}
+
+#style-line {
+  border: 1px solid $main-light-color;
+  width: 100%;
+  margin-top: 1em;
+}
+
+#main-button-container {
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  font-size: 1.2em;
+  width: 40%;
+  height: 3em;
+  margin: .5em;
+  border-radius: 5px;
+  display: inline;
+  border-style: none;
+  background-color: $main-dark-color;
+  color: $main-light-color;
+    &:hover {
+      background-color: $accent-color-dark;
+    }
+}
+
+#main-input {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5em;
+  margin: 1em;
+}
+
+label {
+  margin: .5em 0em;
+  color: $main-light-color;
+}
+
+// input {
+//   margin
+// }
