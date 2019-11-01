@@ -10,6 +10,7 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  font-family: $main-font;
   // background-repeat: no-repeat;
   // text-align: center;
 }
@@ -30,17 +31,49 @@ h1 {
 }
 
 h2 {
-  font-family: $main-font;
   font-weight: lighter;
   color: $main-light-color;
   font-size: 2.5em;
 }
 
+#style-line {
+  border: 1px solid $main-light-color;
+  width: 100%;
+  margin-top: 1em;
+}
+
+#main-button-container {
+  width: 100%;
+  text-align: center;
+}
+
 button {
-  font-family: $main-font;
   font-size: 1.2em;
-  width: 50%;
+  width: 40%;
   height: 3em;
   margin: .5em;
   border-radius: 5px;
+  display: inline;
+  border-style: none;
+  background-color: $main-dark-color;
+  color: $main-light-color;
+    &:hover {
+      background-color: $accent-color-dark;
+    }
 }
+
+#main-input {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5em;
+  margin: 1em;
+}
+
+label {
+  margin: .5em 0em;
+  color: $main-light-color;
+}
+
+// input {
+//   margin
+// }

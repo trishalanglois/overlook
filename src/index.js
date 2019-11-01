@@ -9,4 +9,13 @@ import './css/base.scss';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 
+// $('.nav-to-login').on('click', () => {
+//   window.location = './guest-page.html'
+// })
+
+$('.nav-to-login').click(function(){
+  $('#main-input').slideToggle();
+});
+
+
 console.log('This is the JavaScript entry file - your code begins here.');
