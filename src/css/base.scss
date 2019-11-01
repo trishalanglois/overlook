@@ -65,15 +65,21 @@ button {
 #main-input {
   display: flex;
   flex-direction: column;
-  font-size: 1.5em;
-  margin: 1em;
+  width: 50%;
+}
+
+input {
+  height: 3em;
+}
+
+#login-button {
+  @extend button;
+  width: 100%;
+  margin: .5em 0em;
 }
 
 label {
+  font-size: 1.5em;
   margin: .5em 0em;
   color: $main-light-color;
 }
-
-// input {
-//   margin
-// }
