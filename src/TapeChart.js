@@ -1,7 +1,7 @@
 class TapeChart {
-  constructor() {
-    this.bookings = [];
-    this.rooms = [];
+  constructor(roomsData, bookings) {
+    this.bookings = bookings;
+    this.rooms = rooms;
   }
   findAllAvailableRooms() {
     //return array so can use return value for filterAvailableRooms
