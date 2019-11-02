@@ -1,6 +1,9 @@
 class Staff extends Guest {
-  constructor() {
-    super();
+  constructor(id, name) {
+    super(id, name);
 
+  }
+  deleteBooking() {
+    
   }
 }
