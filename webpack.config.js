@@ -42,8 +42,8 @@ module.exports = {
       template: './src/guest-page.html'
     }),
     new HtmlWebpackPlugin({
-      filename: 'staff-page.html',
-      template: './src/staff-page.html'
+      filename: 'manager-page.html',
+      template: './src/manager-page.html'
     })
   ],
   devServer: {
