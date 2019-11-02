@@ -5,17 +5,15 @@ class TapeChart {
     this.date = date;
   }
   findAllAvailableRooms(date) {
-    //iterate through bookings
-    return this.bookings.filter(booking => {
-      // console.log('log', this.bookings);
-      // console.log(date);
-      booking.date === date;
-    })
-    //find all bookings for today's date (filter)
-    //iterate through today's bookings
-    //for each booking, remove from the rooms array
-    //return what's left of the rooms array
-    //return array so can use return value for filterAvailableRooms
+    return this.rooms.reduce((availableRooms, room) => {
+      let todaysBookings = this.bookings.filter(booking => {
+        return booking.date === date;
+      });
+      if (!todaysBookings.some(booking => booking.roomNumber === room.number)) {
+        availableRooms.push(room)
+      }
+      return availableRooms
+    }, []);
   }
   calculateTotalRevenue() {
 

@@ -4,7 +4,7 @@ const expect = chai.expect;
 import TapeChart from '../src/TapeChart';
 
 let tapechart;
-let date = "2019/11/12";
+let date = '2019/11/12';
 
 let bookingsData = [
   {
@@ -24,7 +24,7 @@ let bookingsData = [
   {
     date: "2019/11/12",
     id: 1572293130159,
-    roomNumber: 8,
+    roomNumber: 1,
     roomServiceCharges: [],
     userID: 21
   },
@@ -87,7 +87,7 @@ describe('TapeChart', () => {
   });
 
   it('should have a method that finds available rooms for a given date', () => {
-    expect(tapechart.findAllAvailableRooms(2019/11/12)).to.deep.equal([1, 2, 3])
+    expect(tapechart.findAllAvailableRooms(date)).to.deep.equal([{ bedSize: "full", bidet: false, costPerNight: 477.38, numBeds: 2, number: 2, roomType: "suite" }, { bedSize: "king", bidet: false, costPerNight: 491.14, numBeds: 1, number: 3, roomType: "single room" }, { bedSize: "queen", bidet: false, costPerNight: 429.44, numBeds: 1, number: 4, roomType: "single room" }])
   });
 
 
