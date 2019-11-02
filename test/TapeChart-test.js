@@ -1,8 +1,94 @@
-import chai from 'chai';
+const chai = require('chai');
 const expect = chai.expect;
 
-describe('See if the tests are running', function() {
-  it('should return true', function() {
-    expect(true).to.equal(true);
+import TapeChart from '../src/TapeChart';
+
+let tapechart, data;
+
+beforeEach(() => {
+  data = {
+    bookingsData: [
+      {
+        date: "2019/11/06",
+        id: 1572293130156,
+        roomNumber: 18,
+        roomServiceCharges: [],
+        userID: 19,
+      },
+      {
+        date: "2019/11/12",
+        id: 1572293130159,
+        roomNumber: 8,
+        roomServiceCharges: [],
+        userID: 21
+      },
+      {
+        date: "2019/11/12",
+        id: 1572293130159,
+        roomNumber: 8,
+        roomServiceCharges: [],
+        userID: 21
+      },
+      {
+        date: "2019/10/29",
+        id: 1572293130159,
+        roomNumber: 10,
+        roomServiceCharges: [],
+        userID: 12
+      },
+    ],
+
+    roomsData: [
+      {
+        bedSize: "queen",
+        bidet: true,
+        costPerNight: 358.4,
+        numBeds: 1,
+        number: 1,
+        roomType: "residential suite"
+      },
+      {
+        bedSize: "full",
+        bidet: false,
+        costPerNight: 477.38,
+        numBeds: 2,
+        number: 2,
+        roomType: "suite"
+      },
+      {
+        bedSize: "king",
+        bidet: false,
+        costPerNight: 491.14,
+        numBeds: 1,
+        number: 3,
+        roomType: "single room"
+      },
+      {
+        bedSize: "queen",
+        bidet: false,
+        costPerNight: 429.44,
+        numBeds: 1,
+        number: 4,
+        roomType: "single room"
+      }
+    ]
+  }
+  tapechart = new TapeChart(data);
+});
+
+describe('TapeChart', () => {
+
+  it('should be a function', () => {
+    expect(TapeChart).to.be.a('function');
   });
+
+  it('should be an instance of TapeChart', () => {
+    expect(tapechart).to.be.an.instanceOf(TapeChart);
+  });
+
+  it('should have a method that finds available rooms for a given date', () => {
+    expect(tapechart.findAllAvailableRooms()).to.deep.equal([])
+  });
+
+
 });

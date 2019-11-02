@@ -11,7 +11,7 @@ let today = new Date();
 
 var date = JSON.stringify(today.getFullYear()+'/'+(today.getMonth()+1)+'/'+ JSON.stringify(today.getDate()).padStart(2, 0));
 
-console.log(date);
+// console.log(date);
 let roomsDataFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms')
 .then(response => response.json());
 
@@ -27,7 +27,7 @@ Promise.all([roomsDataFetch, bookingsDataFetch])
     return tapechartData;
   })
   .then(tapechartData => {
-    return tapechart = new TapeChart(tapechartData);
+    return tapechart = new TapeChart(tapechartData, date);
   })
 
 $('#login-button').on('click', () => {
