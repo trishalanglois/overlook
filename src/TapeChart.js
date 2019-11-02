@@ -1,14 +1,15 @@
 class TapeChart {
-  constructor(fetchedHotelData, date) {
-    console.log(fetchedHotelData);
-    this.bookings = fetchedHotelData.bookingsData;
-    this.rooms = fetchedHotelData.roomsData;
+  constructor(rooms, bookings, date) {
+    this.rooms = rooms;
+    this.bookings = bookings;
     this.date = date;
   }
-  findAllAvailableRooms() {
+  findAllAvailableRooms(date) {
     //iterate through bookings
-    this.bookings.filter(booking => {
-      return
+    return this.bookings.filter(booking => {
+      // console.log('log', this.bookings);
+      // console.log(date);
+      booking.date === date;
     })
     //find all bookings for today's date (filter)
     //iterate through today's bookings

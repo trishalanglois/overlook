@@ -27,8 +27,10 @@ Promise.all([roomsDataFetch, bookingsDataFetch])
     return tapechartData;
   })
   .then(tapechartData => {
-    return tapechart = new TapeChart(tapechartData, date);
+    console.log('this', tapechartData.roomsData, tapechartData.bookingsData);
+    return tapechart = new TapeChart(tapechartData.roomsData, tapechartData.bookingsData, date);
   })
+
 
 $('#login-button').on('click', () => {
 
@@ -40,7 +42,6 @@ $('#login-button').on('click', () => {
   } else {
     showLoginError();
   }
-  console.log(tapechart);
 })
 
 
