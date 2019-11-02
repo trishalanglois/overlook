@@ -81,3 +81,13 @@ label {
   margin: .5em 0em;
   color: $main-light-color;
 }
+
+.error-message {
+  background-color: $main-dark-color;
+  color: red;
+  font-size: 1.25em;
+}
+
+.hide {
+  display: none;
+}
