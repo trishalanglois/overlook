@@ -90,5 +90,13 @@ describe('TapeChart', () => {
     expect(tapechart.findAllAvailableRooms(date)).to.deep.equal([{ bedSize: "full", bidet: false, costPerNight: 477.38, numBeds: 2, number: 2, roomType: "suite" }, { bedSize: "king", bidet: false, costPerNight: 491.14, numBeds: 1, number: 3, roomType: "single room" }, { bedSize: "queen", bidet: false, costPerNight: 429.44, numBeds: 1, number: 4, roomType: "single room" }])
   });
 
+  it('should have a method that calculates total revenue for a given date', () => {
+    expect(tapechart.calculateDailyRevenue(date)).to.equal(1756.36);
+  });
 
+  it('should have a method that calculates the percent of rooms booked for a given date', () => {
+    expect(tapechart.findPercentAvailableRooms(date)).to.equal(50);
+  });
+
+  it('should have a method that finds available rooms')
 });
