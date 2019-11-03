@@ -167,7 +167,21 @@ label {
   height: 200px;
 }
 
-
-.hide {
-  display: none;
+.book-room-sidebar {
+  h1 {
+    font-size: 5em;
+    margin-bottom: 0em;
+  }
+    input {
+      width: 80%;
+    }
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 2%;
+  width: 25%;
 }
+
+// .hide {
+//   display: none;
+// }
