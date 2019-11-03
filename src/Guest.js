@@ -27,10 +27,11 @@ class Guest {
   }
 
   calculateAmountSpent() {
-    return this.rooms.reduce((totalSpent, room) => {
+    let stringAmount = this.rooms.reduce((totalSpent, room) => {
       totalSpent += room.costPerNight;
       return totalSpent
-    }, 0)
+    }, 0).toFixed(2);
+    return parseFloat(stringAmount);
   }
 }
 

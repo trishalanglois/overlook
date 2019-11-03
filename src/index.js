@@ -80,6 +80,7 @@ function populateGuestPage(tapechart) {
   guest = new Guest(guestData.id, guestData.name, tapechart);
   console.log('guest rooms', guest.rooms);
   showRoomsOnDOM();
+  $('#guest-amount-spent').append('$' + guest.calculateAmountSpent());
 }
 
 
@@ -97,4 +98,8 @@ function showRoomsOnDOM() {
     <br>`
     )
   })
+}
+
+function showAmountSpentOnDOM() {
+
 }
