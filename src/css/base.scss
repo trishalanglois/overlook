@@ -45,6 +45,12 @@ h2 {
   margin-top: 1em;
 }
 
+.user-style-line {
+  @extend #style-line;
+  width: 80%;
+  margin: auto;
+}
+
 #main-button-container {
   width: 100%;
   text-align: center;
@@ -153,6 +159,13 @@ label {
     }
 }
 
+#welcome-msg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  height: 200px;
+}
 
 
 .hide {
