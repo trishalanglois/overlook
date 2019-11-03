@@ -2,7 +2,12 @@
 @import 'variables';
 @import 'media-queries'; //actually do the media queries in a separate doc
 
-body {
+* {
+  // border: 1px solid red;
+
+}
+
+#login-page {
   background-image: url('../images/flowers.png');
   background-size: cover;
   background-repeat: no-repeat;

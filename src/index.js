@@ -33,9 +33,11 @@ Promise.all([roomsDataFetch, bookingsDataFetch, guestsDataFetch])
     return tapechartData;
   })
   .then(tapechartData => {
-    console.log('this', tapechartData.roomsData, tapechartData.bookingsData);
-    console.log('guests', allGuests);
-    return tapechart = new TapeChart(tapechartData.roomsData, tapechartData.bookingsData, date)
+    console.log('rooms, bookings', tapechartData.roomsData, tapechartData.bookingsData);
+    console.log('guests', allGuests.users);
+    tapechart = new TapeChart(tapechartData.roomsData, tapechartData.bookingsData, date);
+    populateManagerPage(date);
+    populateGuestPage(tapechart);
   })
   // .then(guestsData => {
   //   console.log(guestsData);
