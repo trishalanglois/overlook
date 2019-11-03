@@ -18,18 +18,27 @@ let roomsDataFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/r
 let bookingsDataFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings')
 .then(response => response.json());
 
-let tapechartData = {roomsData: [], bookingsData: []};
+let guestsDataFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
+.then(response => response.json());
 
-Promise.all([roomsDataFetch, bookingsDataFetch])
+let tapechartData = {roomsData: [], bookingsData: []};
+let allGuests;
+
+Promise.all([roomsDataFetch, bookingsDataFetch, guestsDataFetch])
   .then(data => {
     tapechartData.roomsData = data[0].rooms;
     tapechartData.bookingsData = data[1].bookings;
+    allGuests = data[2];
     return tapechartData;
   })
   .then(tapechartData => {
     console.log('this', tapechartData.roomsData, tapechartData.bookingsData);
-    return tapechart = new TapeChart(tapechartData.roomsData, tapechartData.bookingsData, date);
+    console.log('guests', allGuests);
+    return tapechart = new TapeChart(tapechartData.roomsData, tapechartData.bookingsData, date)
   })
+  // .then(guestsData => {
+  //   console.log(guestsData);
+  //   return allGuests = guestsData;
 
 
 $('#login-button').on('click', () => {
