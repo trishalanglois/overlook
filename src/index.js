@@ -79,6 +79,7 @@ function populateGuestPage(tapechart) {
   });
   guest = new Guest(guestData.id, guestData.name, tapechart);
   console.log('guest rooms', guest.rooms);
+  $('.guest-name').text(guest.firstName);
   showRoomsOnDOM();
   $('#guest-amount-spent').append('$' + guest.calculateAmountSpent());
 }
