@@ -98,5 +98,4 @@ describe('TapeChart', () => {
     expect(tapechart.findPercentAvailableRooms(date)).to.equal(50);
   });
 
-  it('should have a method that finds available rooms')
 });

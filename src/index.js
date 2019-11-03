@@ -6,6 +6,7 @@ import Manager from './Manager';
 
 let tapechart;
 let today = new Date();
+let guestId;
 
 
 
