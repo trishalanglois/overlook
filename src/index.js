@@ -71,6 +71,7 @@ function populateManagerPage(date) {
 }
 
 //GUEST PAGE
+
 function populateGuestPage(tapechart) {
   let parsedId = JSON.parse(localStorage.getItem('guestId'))
   let guestData = allGuests.users.find(guest => {
@@ -78,12 +79,9 @@ function populateGuestPage(tapechart) {
   });
   guest = new Guest(guestData.id, guestData.name, tapechart);
   console.log('guest rooms', guest.rooms);
-  // let rooms = JSON.parse(guest.rooms);
   showRoomsOnDOM();
-  // $('#guest-reservations').html(`${showRoomsOnDOM()}`);
-  //for each room.number -- user interpolation
-  //update to show specific user data
 }
+
 
 function showRoomsOnDOM() {
   guest.rooms.forEach(room => {
@@ -93,6 +91,10 @@ function showRoomsOnDOM() {
     <br>
     <b>BED SIZE</b>: ${room.bedSize}
     <br>
-    <b>REWARD POINTS</b>: ${room.costPerNight}`)
+    <b>REWARD POINTS</b>: ${room.costPerNight}
+    <br>
+    ---------
+    <br>`
+    )
   })
 }
