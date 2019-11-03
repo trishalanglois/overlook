@@ -25,9 +25,12 @@ class Guest {
       })
     })
   }
-  
-  calculateAmountSpent() {
 
+  calculateAmountSpent() {
+    return this.rooms.reduce((totalSpent, room) => {
+      totalSpent += room.costPerNight;
+      return totalSpent
+    }, 0)
   }
 }
 

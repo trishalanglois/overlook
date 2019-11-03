@@ -96,4 +96,8 @@ describe('Guest', () => {
     expect(guest.rooms).to.deep.equal([{ bedSize: "full", bidet: false, costPerNight: 477.38, numBeds: 2, number: 18, roomType: "suite" }, { bedSize: "queen", bidet: true, costPerNight: 358.4, numBeds: 1, number: 1, roomType: "residential suite" }])
   });
 
+  it('should have a method that calculates the total amount spent', () => {
+    expect(guest.calculateAmountSpent()).to.equal(835.78);
+  })
+
 });
