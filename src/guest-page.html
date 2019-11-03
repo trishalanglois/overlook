@@ -4,8 +4,27 @@
     <title>The Lucid Hotel - Guest</title>
     <link href="https://fonts.googleapis.com/css?family=Alex+Brush|Roboto+Condensed:300,400,700&display=swap" rel="stylesheet">
   </head>
-  <body>
-    <h1>You are on the guest page, lessscooooooode!</h1>
-    <!-- Do not include the index.js or main.bundle.js file here - it is done automatically by the webpack server -->
+  <body class='user-view'>
+    <header class='nav-home'>
+      <div class='logo-home'>
+        <h1 class='logo'>The Lucid Hotel<h1/>
+        <p class='logo-subtext'>WHERE DREAMS COME TRUE</p>
+      </div>
+    </header>
+    <div class='stats-container'>
+      <section class='stats'>
+        <h2>Reservations</h2>
+        <h3 id='guest-reservations'></h3>
+      </section>
+      <section class='stats'>
+        <h2>Placeholder</h2>
+        <h3 id='guest-placeholder'></h3>
+      </section>
+      <section class='stats'>
+        <h2>Reward Status</h2>
+        <h3>ANGEL STATUS</h3>
+        <h3 id='guest-amount-spent'></h3>
+      </section>
+    </div>
   </body>
 </html>

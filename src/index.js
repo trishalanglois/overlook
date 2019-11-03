@@ -7,7 +7,9 @@ import Manager from './Manager';
 
 let tapechart;
 let today = new Date();
+let guest;
 let guestId;
+let guestName;
 let allGuests;
 
 var date = JSON.stringify(today.getFullYear()+'/'+(today.getMonth()+1)+'/'+ JSON.stringify(today.getDate()).padStart(2, 0));
@@ -31,10 +33,12 @@ Promise.all([roomsDataFetch, bookingsDataFetch, guestsDataFetch])
     return tapechartData;
   })
   .then(tapechartData => {
-    console.log('this', tapechartData.roomsData, tapechartData.bookingsData);
-    console.log('guests', allGuests);
+    console.log('rooms, bookings', tapechartData.roomsData, tapechartData.bookingsData);
+    console.log('guests', allGuests.users);
     tapechart = new TapeChart(tapechartData.roomsData, tapechartData.bookingsData, date);
+    // debugger;
     populateManagerPage(date);
+    populateGuestPage(tapechart);
   })
 
 //LOGIN PAGE
@@ -45,10 +49,15 @@ $('#login-button').on('click', () => {
     window.location = './manager-page.html'
   } else if (username.includes('customer') && $('.password').val() === 'overlook2019') {
     let usernameSplit = username.split('r');
-    // debugger;
+    // // debugger;
     let guestId = usernameSplit[1];
+    // let guestInfo = findGuest();
+    // guest = new Guest(guestInfo); //not working because tapechart isn't done yet
     localStorage.setItem('guestId', guestId);
+    // let guestName = guest.name;
+    // localStorage.setItem('guestName', guestName);
     window.location = './guest-page.html'
+    // populateGuestPage(guest.id, guest.name, tapechart);
   } else {
     showLoginError();
   }
@@ -67,5 +76,21 @@ function populateManagerPage(date) {
   $('#manager-available-rooms').text(tapechart.findAllAvailableRooms(date).length);
   $('#manager-revenue').text('$' + tapechart.calculateDailyRevenue(date));
   $('#manager-occupied-rooms').text(tapechart.findPercentAvailableRooms() + '%');
-
 }
+
+//GUEST PAGE
+function populateGuestPage(tapechart) {
+  let parsedId = JSON.parse(localStorage.getItem('guestId'))
+  let guestData = allGuests.users.find(guest => {
+    return guest.id === parsedId;
+  });
+  guest = new Guest(guestData.id, guestData.name, tapechart)
+  console.log(guest);
+}
+
+
+// function findGuest() {
+//   return allGuests.users.find(guest => {
+//     return guest.id === guestId;
+//   })
+// }
