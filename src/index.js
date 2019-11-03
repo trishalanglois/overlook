@@ -23,7 +23,6 @@ let bookingsDataFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/190
 let guestsDataFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
 .then(response => response.json());
 
-
 let tapechartData = {roomsData: [], bookingsData: []};
 Promise.all([roomsDataFetch, bookingsDataFetch, guestsDataFetch])
   .then(data => {
@@ -44,20 +43,13 @@ Promise.all([roomsDataFetch, bookingsDataFetch, guestsDataFetch])
 //LOGIN PAGE
 $('#login-button').on('click', () => {
   let username = $('.username').val();
-  // console.log(guestId);
   if (username === 'manager' && $('.password').val() === 'overlook2019') {
     window.location = './manager-page.html'
   } else if (username.includes('customer') && $('.password').val() === 'overlook2019') {
     let usernameSplit = username.split('r');
-    // // debugger;
     let guestId = usernameSplit[1];
-    // let guestInfo = findGuest();
-    // guest = new Guest(guestInfo); //not working because tapechart isn't done yet
     localStorage.setItem('guestId', guestId);
-    // let guestName = guest.name;
-    // localStorage.setItem('guestName', guestName);
     window.location = './guest-page.html'
-    // populateGuestPage(guest.id, guest.name, tapechart);
   } else {
     showLoginError();
   }
@@ -84,13 +76,23 @@ function populateGuestPage(tapechart) {
   let guestData = allGuests.users.find(guest => {
     return guest.id === parsedId;
   });
-  guest = new Guest(guestData.id, guestData.name, tapechart)
-  console.log(guest);
+  guest = new Guest(guestData.id, guestData.name, tapechart);
+  console.log('guest rooms', guest.rooms);
+  // let rooms = JSON.parse(guest.rooms);
+  showRoomsOnDOM();
+  // $('#guest-reservations').html(`${showRoomsOnDOM()}`);
+  //for each room.number -- user interpolation
+  //update to show specific user data
 }
 
-
-// function findGuest() {
-//   return allGuests.users.find(guest => {
-//     return guest.id === guestId;
-//   })
-// }
+function showRoomsOnDOM() {
+  guest.rooms.forEach(room => {
+    // console.log(room.roomType, room.bedSize, room.costPerNight);
+    $('#guest-reservations').append(
+    `<b>ROOM TYPE</b>: ${room.roomType}
+    <br>
+    <b>BED SIZE</b>: ${room.bedSize}
+    <br>
+    <b>REWARD POINTS</b>: ${room.costPerNight}`)
+  })
+}
