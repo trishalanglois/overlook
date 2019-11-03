@@ -1,8 +1,8 @@
 import Guest from '../src/Guest';
 
 class Manager extends Guest {
-  constructor(id, name) {
-    super(id, name);
+  constructor(id, name, tapechart) {
+    super(id, name, tapechart);
 
   }
   deleteBooking() {

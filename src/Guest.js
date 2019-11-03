@@ -7,8 +7,14 @@ class Guest {
     this.rooms = this.findRooms(tapechart);
   }
 
-  bookRoom() {
-
+  bookRoom(givenDate, roomNumber) {
+    this.bookings.push({
+      date: givenDate,
+      id: Date.now(),
+      roomNumber: roomNumber,
+      roomServiceCharges: [],
+      userID: this.id  
+    })
   }
 
   findFirstName() {
