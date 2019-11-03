@@ -2,7 +2,12 @@
 @import 'variables';
 @import 'media-queries'; //actually do the media queries in a separate doc
 
-body {
+* {
+  border: 1px solid red;
+
+}
+
+#login-page {
   background-image: url('../images/flowers.png');
   background-size: cover;
   background-repeat: no-repeat;
@@ -87,6 +92,51 @@ label {
   color: red;
   font-size: 1.25em;
 }
+
+#user-view {
+  background-image: url('../images/flowers.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  font-family: $main-font;
+}
+
+.nav-home {
+  display: flex;
+  width: 100%;
+  height: 8em;
+  color: $main-light-color;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.logo-home {
+  text-align: center;
+  float: left;
+  h1 {
+    font-size: 3em;
+  }
+  p {
+    font-family: $main-font;
+    font-weight: lighter;
+    font-size: .4em;
+    margin: 0em;
+  }
+}
+
+.stats-container {
+  display: flex;
+  justify-content: center;
+}
+
+.stats {
+  background: $main-light-color;
+  border-radius: 3px;
+  border: 4px solid $accent-color-dark;
+  display: inline;
+
+}
+
 
 .hide {
   display: none;
