@@ -1,15 +1,19 @@
 class Guest {
-  //need to instantiate user via fetch
   constructor(id, name, tapechart) {
     this.id = id;
     this.name = name;
+    this.firstName = this.findFirstName();
     this.bookings = this.findBookings(tapechart);
     this.rooms = this.findRooms(tapechart);
-    // this.spending?
   }
 
   bookRoom() {
 
+  }
+
+  findFirstName() {
+    let splitName = this.name.split(' ');
+    return splitName[0];
   }
 
   findBookings(tapechart) {
@@ -27,10 +31,11 @@ class Guest {
   }
 
   calculateAmountSpent() {
-    return this.rooms.reduce((totalSpent, room) => {
+    let stringAmount = this.rooms.reduce((totalSpent, room) => {
       totalSpent += room.costPerNight;
       return totalSpent
-    }, 0)
+    }, 0).toFixed(2);
+    return parseFloat(stringAmount);
   }
 }
 
