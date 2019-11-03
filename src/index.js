@@ -45,9 +45,14 @@ Promise.all([roomsDataFetch, bookingsDataFetch, guestsDataFetch])
 $('#login-button').on('click', () => {
 
   let username = $('.username').val();
+  // console.log(guestId);
   if (username === 'manager' && $('.password').val() === 'overlook2019') {
     window.location = './manager-page.html'
   } else if (username.includes('customer') && $('.password').val() === 'overlook2019') {
+    let usernameSplit = username.split('r');
+    // debugger;
+    let guestId = usernameSplit[1];
+    localStorage.setItem('guestId', guestId);
     window.location = './guest-page.html'
   } else {
     showLoginError();
