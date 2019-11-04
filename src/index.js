@@ -120,7 +120,7 @@ $('#date-button').on('click', () => {
   })
 });
 
-$('.filter-button').click(() => {
+$('.room-options-button').click(() => {
   $('.room-menu').slideToggle();
 });
 
