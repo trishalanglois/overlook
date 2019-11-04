@@ -55,7 +55,7 @@ $('#login-button').on('click', () => {
   }
 })
 
-$('.nav-to-login').click(function(){
+$('.nav-to-login').click(() => {
   $('#main-input').slideToggle();
 });
 
@@ -71,7 +71,6 @@ function populateManagerPage(date) {
 }
 
 //GUEST PAGE
-
 function populateGuestPage(tapechart) {
   let parsedId = JSON.parse(localStorage.getItem('guestId'))
   let guestData = allGuests.users.find(guest => {
@@ -87,7 +86,6 @@ function populateGuestPage(tapechart) {
 
 function showRoomsOnDOM() {
   guest.rooms.forEach(room => {
-    // console.log(room.roomType, room.bedSize, room.costPerNight);
     $('#guest-reservations').append(
     `<b>ROOM TYPE</b>: ${room.roomType}
     <br>
@@ -101,6 +99,31 @@ function showRoomsOnDOM() {
   })
 }
 
-function showAmountSpentOnDOM() {
+$('#date-button').on('click', () => {
+  let newDate;
+  createDate()
+});
 
-}
+// function showRooms() {
+//   let newDate;
+//   createDate();
+// };
+
+  //reassign date on the click
+// tapechart = new TapeChart(tapechartData.roomsData, tapechartData.bookingsData, date)
+
+// let tempBookings = tapechart.findTodaysBookings();
+  // let tempAvailableRooms = tapechart.
+  //create new array of bookings for day
+
+  //if (tapechart.todaysAvailableRooms) -- show rooms
+  //else -- show error message
+
+function createDate() {
+  let hyphenDate = $('#date-input').val()
+  var newDate = hyphenDate.replace(/-/g, "/");
+  // day = newDate.getDate();
+  // month = newDate.getMonth() + 1;
+  // year = newDate.getFullYear();
+  console.log(newDate);
+};
