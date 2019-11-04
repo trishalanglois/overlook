@@ -117,6 +117,8 @@ function showRooms(tapechart) {
       <b>BED SIZE</b>: ${room.bedSize}
       <br>
       <b>COST:</b> $${room.costPerNight}
+      <br>
+      <b>ROOM NUMBER:</b> ${room.number}
       </div>
       <button class='book-room-btn'>BOOK ROOM</button>
       <br>
@@ -139,6 +141,8 @@ $('.filter-button').click(() => {
       <b>BED SIZE</b>: ${room.bedSize}
       <br>
       <b>COST:</b> $${room.costPerNight}
+      <br>
+      <b>ROOM NUMBER:</b> ${room.number}
       </div>
       <button class='book-room-btn'>BOOK ROOM</button>
       <br>
@@ -146,9 +150,27 @@ $('.filter-button').click(() => {
     })
 })
 
+$('body').on('click', '.book-room-btn', (tapechart) => {
+  console.log('heyyyy', newDate);
+  //create object { "userID": 48, "date": "2019/09/23", "roomNumber": 4 }
+  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userID: guest.id,
+      date: newDate,
+      roomNumber: 9,
+    })
+  })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+})
+
 
 function createDate() {
   let hyphenDate = $('#date-input').val()
   newDate = hyphenDate.replace(/-/g, "/");
-  console.log(newDate);
 };
