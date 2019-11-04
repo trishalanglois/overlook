@@ -77,14 +77,12 @@ function populateGuestPage(tapechart) {
     return guest.id === parsedId;
   });
   guest = new Guest(guestData.id, guestData.name, tapechart);
-  console.log('guest rooms', guest.rooms);
   $('.guest-name').text(guest.firstName);
-  showRoomsOnDOM();
+  showReservationsOnDOM();
   $('#guest-amount-spent').append('$' + guest.calculateAmountSpent());
 }
 
-
-function showRoomsOnDOM() {
+function showReservationsOnDOM() {
   guest.rooms.forEach(room => {
     $('#guest-reservations').append(
     `<b>ROOM TYPE</b>: ${room.roomType}
@@ -99,18 +97,27 @@ function showRoomsOnDOM() {
   })
 }
 
+let newDate;
+
 $('#date-button').on('click', () => {
-  let newDate;
-  createDate()
+  createDate();
+  tapechart = new TapeChart(tapechartData.roomsData, tapechartData.bookingsData, newDate);
+  console.log('Todays available rooms', tapechart.todaysAvailableRooms);
+
+  tapechart.todaysAvailableRooms.forEach(room => {
+    $('#guest-available-rooms').append(
+    `<section class='rooms'>
+    <b>ROOM TYPE</b>: ${room.roomType}
+    <br>
+    <b>BED SIZE</b>: ${room.bedSize}
+    <br>
+    <b>COST:</b>: ${room.costPerNight}
+    <br>
+    </section>`)
+  })
 });
 
-// function showRooms() {
-//   let newDate;
-//   createDate();
-// };
 
-  //reassign date on the click
-// tapechart = new TapeChart(tapechartData.roomsData, tapechartData.bookingsData, date)
 
 // let tempBookings = tapechart.findTodaysBookings();
   // let tempAvailableRooms = tapechart.
@@ -121,9 +128,6 @@ $('#date-button').on('click', () => {
 
 function createDate() {
   let hyphenDate = $('#date-input').val()
-  var newDate = hyphenDate.replace(/-/g, "/");
-  // day = newDate.getDate();
-  // month = newDate.getMonth() + 1;
-  // year = newDate.getFullYear();
+  newDate = hyphenDate.replace(/-/g, "/");
   console.log(newDate);
 };

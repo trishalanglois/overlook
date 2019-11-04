@@ -14,7 +14,7 @@ class TapeChart {
   }
   findAllAvailableRooms() { //return rooms available today
     return this.rooms.reduce((availableRooms, room) => {
-      if (!this.bookings.some(booking => booking.roomNumber === room.number)) {
+      if (!this.todaysBookings.some(booking => booking.roomNumber === room.number)) {
         availableRooms.push(room)
       }
       return availableRooms
