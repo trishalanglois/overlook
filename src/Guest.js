@@ -4,16 +4,14 @@ class Guest {
     this.name = name;
     this.firstName = this.findFirstName();
     this.bookings = this.findBookings(tapechart);
-    this.rooms = this.findRooms(tapechart);
+    this.rooms = this.findMyRooms(tapechart);
   }
 
   bookRoom(givenDate, roomNumber) {
     this.bookings.push({
+      userID: this.id,
       date: givenDate,
-      id: Date.now(),
-      roomNumber: roomNumber,
-      roomServiceCharges: [],
-      userID: this.id  
+      roomNumber: parseInt(roomNumber)
     })
   }
 
@@ -23,17 +21,16 @@ class Guest {
   }
 
   findBookings(tapechart) {
-    this.bookings = tapechart.bookings.filter(booking =>
+    return tapechart.bookings.filter(booking =>
       booking.userID === this.id)
-    return this.bookings;
   }
 
-  findRooms(tapechart) {
+  findMyRooms(tapechart) {
     return this.bookings.map(booking => {
       return tapechart.rooms.find(room => {
-        return room.number === booking.roomNumber;
+        return room.number === parseInt(booking.roomNumber);
       })
-    })
+    }).filter(room => room)
   }
 
   calculateAmountSpent() {
