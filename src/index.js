@@ -121,8 +121,14 @@ $('#date-button').on('click', () => {
 });
 
 $('.room-options-button').click(() => {
-  $('.room-menu').slideToggle();
+  $('.room-menu-container').slideToggle();
 });
+
+$('.filter-button').click(() => {
+  let roomType = $('.room-options').val();
+  console.log(roomType);
+  // guest.filterAvailableRooms(tapechart, roomType);
+})
 
 // let tempBookings = tapechart.findTodaysBookings();
   // let tempAvailableRooms = tapechart.
