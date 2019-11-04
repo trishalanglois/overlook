@@ -181,6 +181,35 @@ label {
   width: 25%;
 }
 
-// .hide {
-//   display: none;
-// }
+.available-rooms {
+  height: 100%;
+  width: 70%;
+  overflow: auto;
+}
+
+.rooms {
+  // @extend .stats;
+  height: 4em;
+  font-size: 2em;
+  background: $main-light-color;
+  border-radius: 3px;
+  border: 4px solid $accent-color-dark;
+  margin: 1em;
+
+}
+
+//GUEST-SPECIFIC STYLING
+#welcome-msg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  height: 200px;
+}
+
+
+.hide {
+  display: none;
+}
+
+//MANAGER-SPECIFIC STYLING
