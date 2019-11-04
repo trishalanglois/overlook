@@ -78,8 +78,9 @@ button {
   width: 50%;
 }
 
-input {
+#date-input {
   height: 3em;
+  width: 80%;
 }
 
 #login-button {
@@ -167,19 +168,20 @@ label {
 }
 
 .book-room-sidebar {
-  h1 {
-    font-size: 5em;
-    margin-bottom: 0em;
-  }
-  input {
-    width: 80%;
-  }
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding: 2%;
   width: 30%;
   margin: 0% 8%;
+  h1 {
+    font-size: 5em;
+    margin-bottom: 0em;
+  }
+}
+
+.room-type {
+  
 }
 
 .available-rooms {

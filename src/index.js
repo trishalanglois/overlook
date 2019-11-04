@@ -112,7 +112,7 @@ $('#date-button').on('click', () => {
       <br>
       <b>BED SIZE</b>: ${room.bedSize}
       <br>
-      <b>COST:</b> $ ${room.costPerNight}
+      <b>COST:</b> $${room.costPerNight}
     </div>
     <button class='book-room-btn'>BOOK ROOM</button>
     <br>
@@ -120,7 +120,9 @@ $('#date-button').on('click', () => {
   })
 });
 
-
+$('.filter-button').click(() => {
+  $('.room-menu').slideToggle();
+});
 
 // let tempBookings = tapechart.findTodaysBookings();
   // let tempAvailableRooms = tapechart.
