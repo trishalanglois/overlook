@@ -102,23 +102,27 @@ let newDate;
 $('#date-button').on('click', () => {
   createDate();
   tapechart = new TapeChart(tapechartData.roomsData, tapechartData.bookingsData, newDate);
-  console.log('Todays available rooms', tapechart.todaysAvailableRooms);
+  $('#guest-available-rooms').empty();
+  showRooms(tapechart);
+});
+
+function showRooms(tapechart) {
 
   tapechart.todaysAvailableRooms.forEach(room => {
     $('#guest-available-rooms').append(
-    `<section class='rooms'>
-    <div class='booking-room-container'>
+      `<section class='rooms'>
+      <div class='booking-room-container'>
       <b>ROOM TYPE</b>: ${room.roomType}
       <br>
       <b>BED SIZE</b>: ${room.bedSize}
       <br>
       <b>COST:</b> $${room.costPerNight}
-    </div>
-    <button class='book-room-btn'>BOOK ROOM</button>
-    <br>
-    </section>`)
-  })
-});
+      </div>
+      <button class='book-room-btn'>BOOK ROOM</button>
+      <br>
+      </section>`)
+    })
+}
 
 $('.room-options-button').click(() => {
   $('.room-menu-container').slideToggle();
@@ -126,16 +130,22 @@ $('.room-options-button').click(() => {
 
 $('.filter-button').click(() => {
   let roomType = $('.room-options').val();
-  console.log(roomType);
-  // guest.filterAvailableRooms(tapechart, roomType);
+  guest.filterAvailableRooms(tapechart, roomType).forEach(room => {
+    $('#guest-available-rooms').html(
+      `<section class='rooms'>
+      <div class='booking-room-container'>
+      <b>ROOM TYPE</b>: ${room.roomType}
+      <br>
+      <b>BED SIZE</b>: ${room.bedSize}
+      <br>
+      <b>COST:</b> $${room.costPerNight}
+      </div>
+      <button class='book-room-btn'>BOOK ROOM</button>
+      <br>
+      </section>`)
+    })
 })
 
-// let tempBookings = tapechart.findTodaysBookings();
-  // let tempAvailableRooms = tapechart.
-  //create new array of bookings for day
-
-  //if (tapechart.todaysAvailableRooms) -- show rooms
-  //else -- show error message
 
 function createDate() {
   let hyphenDate = $('#date-input').val()
