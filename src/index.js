@@ -107,11 +107,14 @@ $('#date-button').on('click', () => {
   tapechart.todaysAvailableRooms.forEach(room => {
     $('#guest-available-rooms').append(
     `<section class='rooms'>
-    <b>ROOM TYPE</b>: ${room.roomType}
-    <br>
-    <b>BED SIZE</b>: ${room.bedSize}
-    <br>
-    <b>COST:</b>: ${room.costPerNight}
+    <div class='booking-room-container'>
+      <b>ROOM TYPE</b>: ${room.roomType}
+      <br>
+      <b>BED SIZE</b>: ${room.bedSize}
+      <br>
+      <b>COST:</b> $ ${room.costPerNight}
+    </div>
+    <button class='book-room-btn'>BOOK ROOM</button>
     <br>
     </section>`)
   })
