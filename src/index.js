@@ -191,18 +191,18 @@ $('.find-guest-button').click(() => {
 $('.delete-reservation-button-container').show();
 
 $('.delete-booking-button').click(() => {
-  $('#guest-available-rooms').html(
-    `<section class='rooms'>
-    <div class='booking-room-container'>
-    <b>ROOM TYPE</b>: ${room.roomType}
-    <br>
-    <b>BED SIZE</b>: ${room.bedSize}
-    <br>
-    <b>COST:</b> $${room.costPerNight}
-    <br>
-    <b>ROOM NUMBER:</b>${room.number}</span>
-    </div>
-    <button class='book-room-btn' data-roomnumber='${room.number}'>BOOK ROOM</button>
-    <br>
-    </section>`)
+    guest.bookings.forEach(booking => {
+      $('#guest-available-rooms').append(
+      // console.log('sup sup sup');
+      `<section class='rooms'>
+      <div class='booking-room-container'>
+      <b>DATE</b>: ${booking.date}
+      <br>
+      <b>ROOM NUMBER</b>: ${booking.roomNumber}
+      <br>
+      </div>
+      <button class='cancel-room-btn' data-bookingid='${booking.id}'>CANCEL RESERVATION</button>
+      <br>
+      </section>`)
+    })
 })
