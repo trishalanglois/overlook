@@ -5,6 +5,7 @@ class Guest {
     this.firstName = this.findFirstName();
     this.bookings = this.findBookings(tapechart);
     this.rooms = this.findMyRooms(tapechart);
+    this.upcomingBookings = null;
   }
 
   bookRoom(givenDate, roomNumber) {
@@ -45,6 +46,14 @@ class Guest {
     return tapechart.todaysAvailableRooms.filter(room => {
       return room.roomType === roomType
     })
+  }
+  findUpcomingBookings(todayDate) {
+    this.upcomingBookings = this.bookings.filter(booking => {
+      return booking.date > todayDate
+    })
+    //input bookings
+    //filter, returning dates that are after today
+
   }
 }
 

@@ -193,9 +193,9 @@ $('.find-guest-button').click(() => {
 $('.delete-reservation-button-container').show();
 
 $('.delete-booking-button').click(() => {
-    guest.bookings.forEach(booking => {
+    guest.findUpcomingBookings(date);
+    guest.upcomingBookings.forEach(booking => {
       $('#guest-available-rooms').append(
-      // console.log('sup sup sup');
       `<section class='rooms'>
       <div class='booking-room-container'>
       <b>DATE</b>: ${booking.date}
