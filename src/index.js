@@ -171,6 +171,7 @@ $('body').on('click', '.book-room-btn', (tapechart) => {
     })
   })
     .then(response => response.json())
+    .then(alert('We look forward to seeing you soon.'))
     .catch(err => console.log(err));
 })
 
@@ -185,12 +186,12 @@ $('.find-guest-button').click(() => {
     localStorage.setItem('guestId', guestId);
     window.location = './guest-page.html';
     populateGuestPage(tapechart);
+    $('.delete-reservation-button-container').show();
   } else {
     showLoginError();
   }
 });
 
-$('.delete-reservation-button-container').show();
 
 $('.delete-booking-button').click(() => {
     guest.findUpcomingBookings(date);

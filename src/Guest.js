@@ -51,9 +51,6 @@ class Guest {
     this.upcomingBookings = this.bookings.filter(booking => {
       return booking.date > todayDate
     })
-    //input bookings
-    //filter, returning dates that are after today
-
   }
 }
 
