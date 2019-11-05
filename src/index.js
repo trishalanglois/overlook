@@ -33,9 +33,7 @@ Promise.all([roomsDataFetch, bookingsDataFetch, guestsDataFetch])
   })
   .then(tapechartData => {
     console.log('rooms, bookings', tapechartData.roomsData, tapechartData.bookingsData);
-    console.log('guests', allGuests.users);
     tapechart = new TapeChart(tapechartData.roomsData, tapechartData.bookingsData, date);
-    // debugger;
     populateManagerPage(date);
     populateGuestPage(tapechart);
   })
@@ -109,20 +107,24 @@ $('#date-button').on('click', () => {
 function showRooms(tapechart) {
 
   tapechart.todaysAvailableRooms.forEach(room => {
-    $('#guest-available-rooms').append(
-      `<section class='rooms'>
-      <div class='booking-room-container'>
-      <b>ROOM TYPE</b>: ${room.roomType}
-      <br>
-      <b>BED SIZE</b>: ${room.bedSize}
-      <br>
-      <b>COST:</b> $${room.costPerNight}
-      <br>
-      <b>ROOM NUMBER:</b> ${room.number}
-      </div>
-      <button class='book-room-btn' data-roomnumber='${room.number}'>BOOK ROOM</button>
-      <br>
-      </section>`)
+    if (!room) {
+      $('#guest-available-rooms').text('Our deepest apologies. There are no rooms that match your specifications.')
+    } else {
+      $('#guest-available-rooms').append(
+        `<section class='rooms'>
+        <div class='booking-room-container'>
+        <b>ROOM TYPE</b>: ${room.roomType}
+        <br>
+        <b>BED SIZE</b>: ${room.bedSize}
+        <br>
+        <b>COST:</b> $${room.costPerNight}
+        <br>
+        <b>ROOM NUMBER:</b> ${room.number}
+        </div>
+        <button class='book-room-btn' data-roomnumber='${room.number}'>BOOK ROOM</button>
+        <br>
+        </section>`)
+      }
     })
 }
 
@@ -133,6 +135,9 @@ $('.room-options-button').click(() => {
 $('.filter-button').click(() => {
   let roomType = $('.room-options').val();
   guest.filterAvailableRooms(tapechart, roomType).forEach(room => {
+    if (!room) {
+      $('#guest-available-rooms').text('Our deepest apologies. There are no rooms that match your specifications.')
+    } else {
     $('#guest-available-rooms').html(
       `<section class='rooms'>
       <div class='booking-room-container'>
@@ -142,17 +147,16 @@ $('.filter-button').click(() => {
       <br>
       <b>COST:</b> $${room.costPerNight}
       <br>
-      <b>ROOM NUMBER:</b> ${room.number}
+      <b>ROOM NUMBER:</b>${room.number}</span>
       </div>
-      <button class='book-room-btn'>BOOK ROOM</button>
+      <button class='book-room-btn' data-roomnumber='${room.number}'>BOOK ROOM</button>
       <br>
       </section>`)
-    })
+    }
+  })
 })
 
 $('body').on('click', '.book-room-btn', (tapechart) => {
-  console.log('heyyyy', newDate);
-  //create object { "userID": 48, "date": "2019/09/23", "roomNumber": 4 }
   fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
     method: 'POST',
     headers: {
@@ -165,10 +169,8 @@ $('body').on('click', '.book-room-btn', (tapechart) => {
     })
   })
     .then(response => response.json())
-    .then(data => console.log(data))
     .catch(err => console.log(err));
 })
-
 
 function createDate() {
   let hyphenDate = $('#date-input').val()

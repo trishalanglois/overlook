@@ -10,4 +10,6 @@ class Manager extends Guest {
   }
 }
 
+//create method to set guest.id (or this.id?) and guest.name (or this.name?), then can run all the same guest's properties by using that id
+
 export default Manager;
