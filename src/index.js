@@ -120,7 +120,7 @@ function showRooms(tapechart) {
       <br>
       <b>ROOM NUMBER:</b> ${room.number}
       </div>
-      <button class='book-room-btn'>BOOK ROOM</button>
+      <button class='book-room-btn' data-roomnumber='${room.number}'>BOOK ROOM</button>
       <br>
       </section>`)
     })
@@ -161,7 +161,7 @@ $('body').on('click', '.book-room-btn', (tapechart) => {
     body: JSON.stringify({
       userID: guest.id,
       date: newDate,
-      roomNumber: 9,
+      roomNumber: parseInt(event.target.dataset.roomnumber),
     })
   })
     .then(response => response.json())
