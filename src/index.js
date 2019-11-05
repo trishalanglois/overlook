@@ -102,32 +102,75 @@ let newDate;
 $('#date-button').on('click', () => {
   createDate();
   tapechart = new TapeChart(tapechartData.roomsData, tapechartData.bookingsData, newDate);
-  console.log('Todays available rooms', tapechart.todaysAvailableRooms);
+  $('#guest-available-rooms').empty();
+  showRooms(tapechart);
+});
+
+function showRooms(tapechart) {
 
   tapechart.todaysAvailableRooms.forEach(room => {
     $('#guest-available-rooms').append(
-    `<section class='rooms'>
-    <b>ROOM TYPE</b>: ${room.roomType}
-    <br>
-    <b>BED SIZE</b>: ${room.bedSize}
-    <br>
-    <b>COST:</b>: ${room.costPerNight}
-    <br>
-    </section>`)
-  })
+      `<section class='rooms'>
+      <div class='booking-room-container'>
+      <b>ROOM TYPE</b>: ${room.roomType}
+      <br>
+      <b>BED SIZE</b>: ${room.bedSize}
+      <br>
+      <b>COST:</b> $${room.costPerNight}
+      <br>
+      <b>ROOM NUMBER:</b> ${room.number}
+      </div>
+      <button class='book-room-btn' data-roomnumber='${room.number}'>BOOK ROOM</button>
+      <br>
+      </section>`)
+    })
+}
+
+$('.room-options-button').click(() => {
+  $('.room-menu-container').slideToggle();
 });
 
+$('.filter-button').click(() => {
+  let roomType = $('.room-options').val();
+  guest.filterAvailableRooms(tapechart, roomType).forEach(room => {
+    $('#guest-available-rooms').html(
+      `<section class='rooms'>
+      <div class='booking-room-container'>
+      <b>ROOM TYPE</b>: ${room.roomType}
+      <br>
+      <b>BED SIZE</b>: ${room.bedSize}
+      <br>
+      <b>COST:</b> $${room.costPerNight}
+      <br>
+      <b>ROOM NUMBER:</b> ${room.number}
+      </div>
+      <button class='book-room-btn'>BOOK ROOM</button>
+      <br>
+      </section>`)
+    })
+})
 
+$('body').on('click', '.book-room-btn', (tapechart) => {
+  console.log('heyyyy', newDate);
+  //create object { "userID": 48, "date": "2019/09/23", "roomNumber": 4 }
+  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userID: guest.id,
+      date: newDate,
+      roomNumber: parseInt(event.target.dataset.roomnumber),
+    })
+  })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.log(err));
+})
 
-// let tempBookings = tapechart.findTodaysBookings();
-  // let tempAvailableRooms = tapechart.
-  //create new array of bookings for day
-
-  //if (tapechart.todaysAvailableRooms) -- show rooms
-  //else -- show error message
 
 function createDate() {
   let hyphenDate = $('#date-input').val()
   newDate = hyphenDate.replace(/-/g, "/");
-  console.log(newDate);
 };

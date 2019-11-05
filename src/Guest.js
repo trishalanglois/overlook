@@ -40,6 +40,12 @@ class Guest {
     }, 0).toFixed(2);
     return parseFloat(stringAmount);
   }
+
+  filterAvailableRooms(tapechart, roomType) {
+    return tapechart.todaysAvailableRooms.filter(room => {
+      return room.roomType === roomType
+    })
+  }
 }
 
 export default Guest;

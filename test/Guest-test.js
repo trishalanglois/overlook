@@ -103,5 +103,10 @@ describe('Guest', () => {
   it('should have a method to book a new room', () => {
     guest.bookRoom('2019/11/21', 8);
     expect(guest.bookings).to.deep.equal([{ date: "2019/11/06", id: 1572293130156, roomNumber: 18, roomServiceCharges: [], userID: 33 }, { date: "2019/11/12", id: 1572293130159, roomNumber: 1, roomServiceCharges: [], userID: 33 }, {userID: 33, date: "2019/11/21", roomNumber: 8}]);
-  })
+  });
+
+  it('should have a method to filter available rooms', () => {
+    expect(guest.filterAvailableRooms(tapechart, 'single room')).to.deep.equal([{ bedSize: "king", bidet: false, costPerNight: 491.14, numBeds: 1, number: 3, roomType: "single room" }])
+  });
+
 });

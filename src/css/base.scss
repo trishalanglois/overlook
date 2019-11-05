@@ -78,8 +78,9 @@ button {
   width: 50%;
 }
 
-input {
+#date-input {
   height: 3em;
+  width: 80%;
 }
 
 #login-button {
@@ -167,20 +168,69 @@ label {
 }
 
 .book-room-sidebar {
-  h1 {
-    font-size: 5em;
-    margin-bottom: 0em;
-  }
-  input {
-    width: 80%;
-  }
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   padding: 2%;
-  width: 25%;
+  width: 30%;
+  margin: 0% 8%;
+  h1 {
+    font-size: 5em;
+    margin-bottom: 0em;
+  }
 }
 
-// .hide {
-//   display: none;
-// }
+.find-room-and-options-button-container {
+  width: 100%;
+  margin: 1em -11px;
+}
+
+.room-type {
+  font-size: 2em;
+}
+select {
+  margin-right: 3em;
+}
+.available-rooms {
+  height: 100%;
+  width: 70%;
+  overflow: auto;
+}
+
+.rooms {
+  // @extend .stats;
+  height: 4em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2em;
+  background: $main-light-color;
+  padding: 2%;
+  border-radius: 3px;
+  border: 4px solid $accent-color-dark;
+  margin: 2% 18% 2% 2%;
+  // margin-right: 18%;
+    .book-room-btn {
+      width: 20%;
+      height: 2em;
+      // padding: .5em;
+      font-size: .75em;
+      // float: right;
+    }
+}
+
+//GUEST-SPECIFIC STYLING
+#welcome-msg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
+  height: 200px;
+}
+
+
+.hide {
+  display: none;
+}
+
+//MANAGER-SPECIFIC STYLING
