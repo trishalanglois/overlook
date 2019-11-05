@@ -210,5 +210,5 @@ $('.delete-booking-button').click(() => {
 });
 
 $('body').on('click', '.cancel-room-btn', () => {
-  manager.deleteBooking()
+  manager.deleteBooking();
 });
