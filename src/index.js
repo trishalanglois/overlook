@@ -182,8 +182,11 @@ $('.find-guest-button').click(() => {
   if (1 <= guestId && guestId <= 50) {
     localStorage.setItem('guestId', guestId);
     window.location = './guest-page.html';
-    populateGuestPage(tapechart)
+    populateGuestPage(tapechart);
+    event.preventDefault();
   } else {
     showLoginError();
   }
-})
+});
+
+$('.delete-booking-button').removeClass('hide');

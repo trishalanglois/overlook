@@ -229,9 +229,6 @@ select {
 }
 
 
-.hide {
-  display: none;
-}
 
 //MANAGER-SPECIFIC STYLING
 
@@ -263,4 +260,12 @@ select {
   @extend .error-message;
   width: 40%;
   margin: auto;
+}
+
+.delete-booking-button {
+  width: 85%;
+}
+
+.hide {
+  display: none;
 }
