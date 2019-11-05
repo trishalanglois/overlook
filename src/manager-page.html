@@ -25,6 +25,21 @@
         <h3 id='manager-occupied-rooms'></h3>
       </section>
     </div>
-    <!-- <h1>You are on the manager page, mothafucka!</h1> -->
+
+    <div class='user-style-line'></div>
+
+      <section id='find-guest-container'>
+        <h1>Guest Services</h1>
+        <div class='manager-guest-id-container'>
+          <p class='hide error-message manager-error'>Please enter a valid guest ID.</p>
+          <label id='enter-guest-id' for='guest-id'>ENTER GUEST ID:</label>
+          <br>
+          <input type='text' class='manager-guest-id-input' name='guest-id' required
+          minlength='1' maxlength='2' size='15'>
+          <br>
+          <button class='find-guest-button'>FIND GUEST</button>
+
+        </div>
+
   </body>
 </html>
