@@ -11,6 +11,7 @@ let guest;
 let guestId;
 let guestName;
 let allGuests;
+let manager;
 
 var date = JSON.stringify(today.getFullYear()+'/'+(today.getMonth()+1)+'/'+ JSON.stringify(today.getDate()).padStart(2, 0));
 
@@ -75,6 +76,7 @@ function populateGuestPage(tapechart) {
     return guest.id === parsedId;
   });
   guest = new Guest(guestData.id, guestData.name, tapechart);
+  manager = new Manager(guestData.id, guestData.name, tapechart);
   $('.guest-name').text(guest.firstName);
   showReservationsOnDOM();
   $('#guest-amount-spent').append('$' + guest.calculateAmountSpent());
@@ -205,4 +207,8 @@ $('.delete-booking-button').click(() => {
       <br>
       </section>`)
     })
-})
+});
+
+$('body').on('click', '.cancel-room-btn', () => {
+  manager.deleteBooking()
+});
