@@ -269,3 +269,8 @@ select {
 .hide {
   display: none;
 }
+
+.delete-reservation-button-container {
+  @extend .find-room-and-options-button-container;
+  text-align: center;
+}
