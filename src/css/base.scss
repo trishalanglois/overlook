@@ -99,6 +99,7 @@ label {
   background-color: $main-dark-color;
   color: red;
   font-size: 1.25em;
+  width: auto;
 }
 
 //GUEST & MANAGER PAGES
@@ -198,7 +199,6 @@ select {
 }
 
 .rooms {
-  // @extend .stats;
   height: 4em;
   display: flex;
   justify-content: space-between;
@@ -234,3 +234,33 @@ select {
 }
 
 //MANAGER-SPECIFIC STYLING
+
+#find-guest-container {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  h1 {
+    display: inline;
+  }
+}
+
+#enter-guest-id {
+  font-size: 2em;
+}
+
+.manager-guest-id-input {
+  margin-top: 1em;
+  height: 2em;
+  width: 21%;
+}
+
+.find-guest-button {
+  @extend .manager-guest-id-input;
+  display: inline-block;
+}
+
+.manager-error {
+  @extend .error-message;
+  width: 40%;
+  margin: auto;
+}

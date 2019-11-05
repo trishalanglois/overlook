@@ -176,3 +176,14 @@ function createDate() {
   let hyphenDate = $('#date-input').val()
   newDate = hyphenDate.replace(/-/g, "/");
 };
+
+$('.find-guest-button').click(() => {
+  let guestId = $('.manager-guest-id-input').val();
+  if (1 <= guestId && guestId <= 50) {
+    localStorage.setItem('guestId', guestId);
+    window.location = './guest-page.html';
+    populateGuestPage(tapechart)
+  } else {
+    showLoginError();
+  }
+})
