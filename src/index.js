@@ -183,10 +183,26 @@ $('.find-guest-button').click(() => {
     localStorage.setItem('guestId', guestId);
     window.location = './guest-page.html';
     populateGuestPage(tapechart);
-    event.preventDefault();
   } else {
     showLoginError();
   }
 });
 
-$('.delete-booking-button').removeClass('hide');
+$('.delete-reservation-button-container').show();
+
+$('.delete-booking-button').click(() => {
+  $('#guest-available-rooms').html(
+    `<section class='rooms'>
+    <div class='booking-room-container'>
+    <b>ROOM TYPE</b>: ${room.roomType}
+    <br>
+    <b>BED SIZE</b>: ${room.bedSize}
+    <br>
+    <b>COST:</b> $${room.costPerNight}
+    <br>
+    <b>ROOM NUMBER:</b>${room.number}</span>
+    </div>
+    <button class='book-room-btn' data-roomnumber='${room.number}'>BOOK ROOM</button>
+    <br>
+    </section>`)
+})
