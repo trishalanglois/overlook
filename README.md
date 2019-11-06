@@ -18,8 +18,9 @@ To access this repo, simply clone down and run `npm install` to access the neces
 ![Guest Choosing and Filtering Rooms to Book](https://imgur.com/GqztMO7.gif)
 
 ### Manager Page
-![Imgur](https://imgur.com/Tor1q6I.gif)
-![Imgur](https://imgur.com/KzsAo30.gif)
+![Manager Searching for Guest Profile](https://imgur.com/Tor1q6I.gif)
+
+![Manager Modifying Guest Reservations](https://imgur.com/KzsAo30.gif)
 
 ## Future Iterations 
 Future iterations will include small styling tweaks to make things more polished, responsiveness for smaller devices when they are held vertically, and incorporate Chai Spies for testing fetch requests.
