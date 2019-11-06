@@ -12,7 +12,7 @@ To access this repo, simply clone down and run `npm install` to access the neces
 
 ## User Interface
 ### Login Screen
-![User and Manager Login Screen](https://imgur.com/vTYygfV)
+![User and Manager Login Screen](https://imgur.com/vTYygfV.png)
 
 ### Guest Page
 ![Guest Page](https://frontend.turing.io/projects/overlook.html)
