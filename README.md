@@ -18,7 +18,7 @@ To access this repo, simply clone down and run `npm install` to access the neces
 ![Guest Choosing and Filtering Rooms to Book](https://imgur.com/GqztMO7.gif)
 
 ### Manager Page
-![1](https://imgur.com/Ie8D8F0.gif)
+![1](https://imgur.com/GqztMO7.gif)
 ![2](https://imgur.com/7V7O4Yf.gif)
 
 ## Future Iterations 
