@@ -7,7 +7,6 @@ class Guest {
     this.rooms = this.findMyRooms(tapechart);
     this.upcomingBookings = null;
   }
-
   bookRoom(givenDate, roomNumber) {
     this.bookings.push({
       userID: this.id,
@@ -15,17 +14,14 @@ class Guest {
       roomNumber: parseInt(roomNumber)
     })
   }
-
   findFirstName() {
     let splitName = this.name.split(' ');
     return splitName[0];
   }
-
   findBookings(tapechart) {
     return tapechart.bookings.filter(booking =>
       booking.userID === this.id)
   }
-
   findMyRooms(tapechart) {
     return this.bookings.map(booking => {
       return tapechart.rooms.find(room => {
@@ -33,7 +29,6 @@ class Guest {
       })
     }).filter(room => room)
   }
-
   calculateAmountSpent() {
     let stringAmount = this.rooms.reduce((totalSpent, room) => {
       totalSpent += room.costPerNight;
@@ -41,7 +36,6 @@ class Guest {
     }, 0).toFixed(2);
     return parseFloat(stringAmount);
   }
-
   filterAvailableRooms(tapechart, roomType) {
     return tapechart.todaysAvailableRooms.filter(room => {
       return room.roomType === roomType

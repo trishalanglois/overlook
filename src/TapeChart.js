@@ -6,7 +6,6 @@ class TapeChart {
     this.todaysBookings = this.findTodaysBookings();
     this.todaysAvailableRooms = this.findAllAvailableRooms()
   }
-
   findTodaysBookings() {
     return this.bookings.filter(booking => {
       return booking.date === this.date;
@@ -30,10 +29,6 @@ class TapeChart {
   findPercentAvailableRooms() {
     let decimalPercent = this.todaysBookings.length / this.rooms.length;
     return Math.round(decimalPercent * 100);
-  }
-  filterAvailableRooms() {
-    //set up with property as parameter to make dynamic to filter by specific property that the user is looking for
-    //findAllAvailableRooms.filter
   }
 }
 

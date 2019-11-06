@@ -4,24 +4,27 @@ import TapeChart from './TapeChart';
 import Guest from './Guest';
 import Manager from './Manager';
 
-
-let tapechart;
-let today = new Date();
+let allGuests;
 let guest;
 let guestId;
 let guestName;
-let allGuests;
 let manager;
+let newDate;
+let tapechart;
+let today = new Date();
 var date = JSON.stringify(today.getFullYear()+'/'+(today.getMonth()+1)+'/'+ JSON.stringify(today.getDate()).padStart(2, 0));
-
 
 //FETCHES
 let roomsDataFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/rooms/rooms')
 .then(response => response.json());
+
 let bookingsDataFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings')
 .then(response => response.json());
+
 let guestsDataFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
 .then(response => response.json());
+
+
 let tapechartData = {roomsData: [], bookingsData: []};
 Promise.all([roomsDataFetch, bookingsDataFetch, guestsDataFetch])
   .then(data => {
@@ -31,11 +34,8 @@ Promise.all([roomsDataFetch, bookingsDataFetch, guestsDataFetch])
     return tapechartData;
   })
   .then(tapechartData => {
-    // console.log('rooms, bookings', tapechartData.roomsData, tapechartData.bookingsData);
     tapechart = new TapeChart(tapechartData.roomsData, tapechartData.bookingsData, date);
     populateManagerPage(date);
-    console.log("HI");
-    // $('.delete-reservation-button-container').detach();
     populateGuestPage(tapechart);
   })
 
@@ -53,9 +53,11 @@ $('#login-button').on('click', () => {
     showLoginError();
   }
 });
+
 $('.nav-to-login').click(() => {
   $('#main-input').slideToggle();
 });
+
 function showLoginError() {
   $('.error-message').show();
 }
@@ -68,38 +70,25 @@ function populateManagerPage(date) {
 }
 
 //GUEST PAGE
-function populateGuestPage(tapechart) {
-  let parsedId = JSON.parse(localStorage.getItem('guestId'))
-  let guestData = allGuests.users.find(guest => {
-    return guest.id === parsedId;
-  });
-  guest = new Guest(guestData.id, guestData.name, tapechart);
-  manager = new Manager(guestData.id, guestData.name, tapechart);
-  $('.guest-name').text(guest.firstName);
-  showReservationsOnDOM();
-  $('#guest-amount-spent').append('$' + guest.calculateAmountSpent());
-  if(localStorage.getItem('managerControl')) {
-    $('.delete-reservation-button-container').removeClass('hide');
-    localStorage.removeItem('managerControl');
-  }
-}
+$('body').on('click', '.cancel-room-btn', () => {
+  manager.deleteBooking();
+});
 
-function showReservationsOnDOM() {
-  guest.rooms.forEach(room => {
-    $('#guest-reservations').append(
-    `<b>ROOM TYPE</b>: ${room.roomType}
-    <br>
-    <b>BED SIZE</b>: ${room.bedSize}
-    <br>
-    <b>REWARD POINTS</b>: ${room.costPerNight}
-    <br>
-    ---------
-    <br>`
-    )
+$('body').on('click', '.book-room-btn', (tapechart) => {
+  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userID: guest.id,
+      date: newDate,
+      roomNumber: parseInt(event.target.dataset.roomnumber),
+    })
   })
-}
-
-let newDate;
+  .then(response => response.json())
+  .then(alert('We look forward to seeing you soon.'))
+});
 
 $('#date-button').on('click', () => {
   createDate();
@@ -108,32 +97,21 @@ $('#date-button').on('click', () => {
   showRooms(tapechart);
 });
 
-function showRooms(tapechart) {
-
-  tapechart.todaysAvailableRooms.forEach(room => {
-    if (!room) {
-      $('#guest-available-rooms').text('Our deepest apologies. There are no rooms that match your specifications.')
-    } else {
+$('.delete-booking-button').click(() => {
+    guest.findUpcomingBookings(date);
+    guest.upcomingBookings.forEach(booking => {
       $('#guest-available-rooms').append(
-        `<section class='rooms'>
-        <div class='booking-room-container'>
-        <b>ROOM TYPE</b>: ${room.roomType}
-        <br>
-        <b>BED SIZE</b>: ${room.bedSize}
-        <br>
-        <b>COST:</b> $${room.costPerNight}
-        <br>
-        <b>ROOM NUMBER:</b> ${room.number}
-        </div>
-        <button class='book-room-btn' data-roomnumber='${room.number}'>BOOK ROOM</button>
-        <br>
-        </section>`)
-      }
+      `<section class='rooms'>
+      <div class='booking-room-container'>
+      <b>DATE</b>: ${booking.date}
+      <br>
+      <b>ROOM NUMBER</b>: ${booking.roomNumber}
+      <br>
+      </div>
+      <button class='cancel-room-btn' data-bookingid='${booking.id}'>CANCEL RESERVATION</button>
+      <br>
+      </section>`)
     })
-}
-
-$('.room-options-button').click(() => {
-  $('.room-menu-container').slideToggle();
 });
 
 $('.filter-button').click(() => {
@@ -158,29 +136,7 @@ $('.filter-button').click(() => {
       </section>`)
     }
   })
-})
-
-$('body').on('click', '.book-room-btn', (tapechart) => {
-  fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/bookings/bookings', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      userID: guest.id,
-      date: newDate,
-      roomNumber: parseInt(event.target.dataset.roomnumber),
-    })
-  })
-    .then(response => response.json())
-    .then(alert('We look forward to seeing you soon.'))
-    .catch(err => console.log(err));
-})
-
-function createDate() {
-  let hyphenDate = $('#date-input').val()
-  newDate = hyphenDate.replace(/-/g, "/");
-};
+});
 
 $('.find-guest-button').click(() => {
   let guestId = $('.manager-guest-id-input').val();
@@ -193,24 +149,65 @@ $('.find-guest-button').click(() => {
   }
 });
 
+$('.room-options-button').click(() => {
+  $('.room-menu-container').slideToggle();
+});
 
-$('.delete-booking-button').click(() => {
-    guest.findUpcomingBookings(date);
-    guest.upcomingBookings.forEach(booking => {
-      $('#guest-available-rooms').append(
+function createDate() {
+  let hyphenDate = $('#date-input').val()
+  newDate = hyphenDate.replace(/-/g, "/");
+};
+
+function populateGuestPage(tapechart) {
+  let parsedId = JSON.parse(localStorage.getItem('guestId'))
+  let guestData = allGuests.users.find(guest => {
+    return guest.id === parsedId;
+  });
+  guest = new Guest(guestData.id, guestData.name, tapechart);
+  manager = new Manager(guestData.id, guestData.name, tapechart);
+  $('.guest-name').text(guest.firstName);
+  showReservationsOnDOM();
+  $('#guest-amount-spent').append('$' + guest.calculateAmountSpent());
+  if(localStorage.getItem('managerControl')) {
+    $('.delete-reservation-button-container').removeClass('hide');
+    localStorage.removeItem('managerControl');
+  }
+};
+
+function showRooms(tapechart) {
+  tapechart.todaysAvailableRooms.forEach(room => {
+    if (!room) {
+      $('#guest-available-rooms').text('Our deepest apologies. There are no rooms that match your specifications.')
+    } else {
+    $('#guest-available-rooms').append(
       `<section class='rooms'>
       <div class='booking-room-container'>
-      <b>DATE</b>: ${booking.date}
+      <b>ROOM TYPE</b>: ${room.roomType}
       <br>
-      <b>ROOM NUMBER</b>: ${booking.roomNumber}
+      <b>BED SIZE</b>: ${room.bedSize}
       <br>
+      <b>COST:</b> $${room.costPerNight}
+      <br>
+      <b>ROOM NUMBER:</b> ${room.number}
       </div>
-      <button class='cancel-room-btn' data-bookingid='${booking.id}'>CANCEL RESERVATION</button>
+      <button class='book-room-btn' data-roomnumber='${room.number}'>BOOK ROOM</button>
       <br>
       </section>`)
-    })
-});
+    }
+  })
+};
 
-$('body').on('click', '.cancel-room-btn', () => {
-  manager.deleteBooking();
-});
+function showReservationsOnDOM() {
+  guest.rooms.forEach(room => {
+    $('#guest-reservations').append(
+    `<b>ROOM TYPE</b>: ${room.roomType}
+    <br>
+    <b>BED SIZE</b>: ${room.bedSize}
+    <br>
+    <b>REWARD POINTS</b>: ${room.costPerNight}
+    <br>
+    ---------
+    <br>`
+    )
+  })
+};
