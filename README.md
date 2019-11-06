@@ -15,13 +15,13 @@ To access this repo, simply clone down and run `npm install` to access the neces
 ![User and Manager Login Screen](https://imgur.com/vTYygfV.png)
 
 ### Guest Page
-![Guest Page](https://frontend.turing.io/projects/overlook.html)
+![Guest Page](https://imgur.com/qFq4TfE.png)
 
 ### Manager Page
-![Manager Page](https://frontend.turing.io/projects/overlook.html)
+![Manager Page](https://imgur.com/wPe9Tn6.png)
 
 ## User Experience
-
+![Toggle User and Manager Login Fields](https://imgur.com/DBXWw4k.gif)
 
 ## Future Iterations 
 
