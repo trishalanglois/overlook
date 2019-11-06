@@ -33,10 +33,11 @@ Promise.all([roomsDataFetch, bookingsDataFetch, guestsDataFetch])
     return tapechartData;
   })
   .then(tapechartData => {
-    console.log('rooms, bookings', tapechartData.roomsData, tapechartData.bookingsData);
+    // console.log('rooms, bookings', tapechartData.roomsData, tapechartData.bookingsData);
     tapechart = new TapeChart(tapechartData.roomsData, tapechartData.bookingsData, date);
     populateManagerPage(date);
-    $('.delete-reservation-button-container').detach();
+    console.log("HI");
+    // $('.delete-reservation-button-container').detach();
     populateGuestPage(tapechart);
   })
 
@@ -81,6 +82,10 @@ function populateGuestPage(tapechart) {
   $('.guest-name').text(guest.firstName);
   showReservationsOnDOM();
   $('#guest-amount-spent').append('$' + guest.calculateAmountSpent());
+  if(localStorage.getItem('managerControl')) {
+    $('.delete-reservation-button-container').removeClass('hide');
+    localStorage.removeItem('managerControl');
+  }
 }
 
 function showReservationsOnDOM() {
@@ -185,9 +190,8 @@ $('.find-guest-button').click(() => {
   let guestId = $('.manager-guest-id-input').val();
   if (1 <= guestId && guestId <= 50) {
     localStorage.setItem('guestId', guestId);
+    localStorage.setItem('managerControl', true);
     window.location = './guest-page.html';
-    populateGuestPage(tapechart);
-    $('.delete-reservation-button-container').removeClass('hide');
   } else {
     showLoginError();
   }
