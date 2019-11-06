@@ -17,4 +17,4 @@ To access this repo, simply clone down and run `npm install` to access the neces
 ## Future Iterations 
 
 ### Project Speculations
-![View Project Requirements from Turing School of Software and Design](https://frontend.turing.io/projects/overlook.html)
+[View Project Requirements from Turing School of Software and Design](https://frontend.turing.io/projects/overlook.html)
