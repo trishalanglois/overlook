@@ -1,73 +1,66 @@
 @import 'normalize';
 @import 'variables';
-@import 'media-queries'; //actually do the media queries in a separate doc
-
-* {
-  // border: 1px solid red;
-  // height: 100vh;
-
-}
 
 //LOGIN PAGE
 #login-page {
-  background-image: url('../images/flowers.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+  background-image: url('../images/flowers.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
   font-family: $main-font;
+  height: 100vh;
+  justify-content: center;
 }
 
 .main-container {
+  align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
 h1 {
+  color: $main-light-color;
   font-family: $accent-font;
   font-size: 3em;
-  color: $main-light-color;
   font-size: 8em;
   margin: .1em;
 }
 
 h2 {
-  font-weight: lighter;
   color: $main-light-color;
   font-size: 2.5em;
+  font-weight: lighter;
 }
 
 #style-line {
   border: 1px solid $main-light-color;
-  width: 100%;
   margin-top: 1em;
+  width: 100%;
 }
 
 .user-style-line {
   @extend #style-line;
-  width: 80%;
   margin: auto;
+  width: 80%;
 }
 
 #main-button-container {
-  width: 100%;
   text-align: center;
+  width: 100%;
 }
 
 button {
+  background-color: $main-dark-color;
+  border-radius: 5px;
+  border-style: none;
+  color: $main-light-color;
+  display: inline;
   font-size: 1.2em;
-  width: 40%;
   height: 3em;
   margin: .5em;
-  border-radius: 5px;
-  display: inline;
-  border-style: none;
-  background-color: $main-dark-color;
-  color: $main-light-color;
+  width: 40%;
     &:hover {
       background-color: $accent-color-dark;
     }
@@ -86,14 +79,14 @@ button {
 
 #login-button {
   @extend button;
-  width: 100%;
   margin: .5em 0em;
+  width: 100%;
 }
 
 label {
+  color: $main-light-color;
   font-size: 1.5em;
   margin: .5em 0em;
-  color: $main-light-color;
 }
 
 .error-message {
@@ -106,30 +99,31 @@ label {
 //GUEST & MANAGER PAGES
 .user-view {
   background-image: url('../images/flowers.png');
-  background-size: cover;
   background-repeat: no-repeat;
+  background-size: cover;
   font-family: $main-font;
+  height: 100%;
 }
 
 .nav-home {
-  display: flex;
-  width: 100%;
-  height: 8em;
-  color: $main-light-color;
-  justify-content: flex-start;
   align-items: center;
+  color: $main-light-color;
+  display: flex;
+  height: 8em;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .logo-home {
-  text-align: center;
   float: left;
+  text-align: center;
   h1 {
     font-size: 3em;
   }
   p {
     font-family: $main-font;
-    font-weight: lighter;
     font-size: .4em;
+    font-weight: lighter;
     margin: 0em;
   }
 }
@@ -145,20 +139,20 @@ label {
   border: 4px solid $accent-color-dark;
   display: inline;
   height: 20%;
-  width: 30%;
   margin: 2%;
   text-align: center;
+  width: 30%;
     h2 {
-      font-size: 2em;
-      font-family: $accent-font;
       color: $main-dark-color;
+      font-family: $accent-font;
+      font-size: 2em;
       font-weight: bold;
       margin: .5em;
     }
 
     h3 {
-      font-weight: lighter;
       font-size: 2.5em;
+      font-weight: lighter;
       margin: .5em;
     }
 }
@@ -171,11 +165,11 @@ label {
 .book-room-sidebar {
   display: flex;
   flex-direction: column;
+  height: 100%;
   justify-content: flex-start;
+  margin: 0% 8%;
   padding: 2%;
   width: 30%;
-  margin: 0% 8%;
-  height: 100%;
   h1 {
     font-size: 5em;
     margin-bottom: 0em;
@@ -183,8 +177,8 @@ label {
 }
 
 .find-room-and-options-button-container {
-  width: 100%;
   margin: 1em -11px;
+  width: 100%;
 }
 
 .room-type {
@@ -195,48 +189,43 @@ select {
 }
 .available-rooms {
   height: 100%;
-  width: 70%;
   overflow: auto;
+  width: 70%;
 }
 
 .rooms {
-  height: 4em;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-size: 2em;
   background: $main-light-color;
-  padding: 2%;
   border-radius: 3px;
   border: 4px solid $accent-color-dark;
+  display: flex;
+  font-size: 2em;
+  height: 4em;
+  justify-content: space-between;
   margin: 2% 18% 2% 2%;
-  // margin-right: 18%;
+  padding: 2%;
     .book-room-btn {
       width: 20%;
       height: 2em;
-      // padding: .5em;
       font-size: .75em;
-      // float: right;
     }
 }
 
 //GUEST-SPECIFIC STYLING
 #welcome-msg {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   font-size: 1.5em;
   height: 200px;
+  justify-content: center;
 }
-
-
 
 //MANAGER-SPECIFIC STYLING
 
 #find-guest-container {
   margin: auto;
-  width: 50%;
   text-align: center;
+  width: 50%;
   h1 {
     display: inline;
   }
@@ -247,8 +236,8 @@ select {
 }
 
 .manager-guest-id-input {
-  margin-top: 1em;
   height: 2em;
+  margin-top: 1em;
   width: 21%;
 }
 
@@ -259,14 +248,13 @@ select {
 
 .manager-error {
   @extend .error-message;
-  width: 40%;
   margin: auto;
+  width: 40%;
 }
 
 .delete-booking-button {
   width: 85%;
 }
-
 
 .delete-reservation-button-container {
   @extend .find-room-and-options-button-container;
