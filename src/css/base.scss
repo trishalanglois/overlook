@@ -108,7 +108,6 @@ label {
   background-image: url('../images/flowers.png');
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
   font-family: $main-font;
 }
 
@@ -176,6 +175,7 @@ label {
   padding: 2%;
   width: 30%;
   margin: 0% 8%;
+  height: 100%;
   h1 {
     font-size: 5em;
     margin-bottom: 0em;

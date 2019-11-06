@@ -12,7 +12,6 @@ let guestId;
 let guestName;
 let allGuests;
 let manager;
-
 var date = JSON.stringify(today.getFullYear()+'/'+(today.getMonth()+1)+'/'+ JSON.stringify(today.getDate()).padStart(2, 0));
 
 
@@ -23,7 +22,6 @@ let bookingsDataFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/190
 .then(response => response.json());
 let guestsDataFetch = fetch('https://fe-apps.herokuapp.com/api/v1/overlook/1904/users/users')
 .then(response => response.json());
-
 let tapechartData = {roomsData: [], bookingsData: []};
 Promise.all([roomsDataFetch, bookingsDataFetch, guestsDataFetch])
   .then(data => {
@@ -54,12 +52,10 @@ $('#login-button').on('click', () => {
   } else {
     showLoginError();
   }
-})
-
+});
 $('.nav-to-login').click(() => {
   $('#main-input').slideToggle();
 });
-
 function showLoginError() {
   $('.error-message').show();
 }
