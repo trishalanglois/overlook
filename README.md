@@ -12,7 +12,7 @@ To access this repo, simply clone down and run `npm install` to access the neces
 
 ## User Interface and User Experience
 ### Login Screen
-![Toggle User and Manager Login Fields](https://imgur.com/DBXWw4k.gif)
+![Toggle User and Manager Login Fields](https://imgur.com/gin89xX.gif)
 
 ### Guest Page
 ![Guest Choosing and Filtering Rooms to Book](https://imgur.com/GqztMO7.gif)
