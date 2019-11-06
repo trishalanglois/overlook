@@ -11,8 +11,17 @@ The Lucid Hotel is set up with three classes, TapeChart, Guest, and Manager, wit
 To access this repo, simply clone down and run `npm install` to access the necessary packages.  For the best viewing experience, run `npm run start` and copy and past your local server into the browswer.
 
 ## User Interface
+### Login Screen
+![User and Manager Login Screen](https://imgur.com/vTYygfV)
+
+### Guest Page
+![Guest Page](https://frontend.turing.io/projects/overlook.html)
+
+### Manager Page
+![Manager Page](https://frontend.turing.io/projects/overlook.html)
 
 ## User Experience
+
 
 ## Future Iterations 
 
