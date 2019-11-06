@@ -36,6 +36,7 @@ Promise.all([roomsDataFetch, bookingsDataFetch, guestsDataFetch])
     console.log('rooms, bookings', tapechartData.roomsData, tapechartData.bookingsData);
     tapechart = new TapeChart(tapechartData.roomsData, tapechartData.bookingsData, date);
     populateManagerPage(date);
+    $('.delete-reservation-button-container').detach();
     populateGuestPage(tapechart);
   })
 
@@ -186,7 +187,7 @@ $('.find-guest-button').click(() => {
     localStorage.setItem('guestId', guestId);
     window.location = './guest-page.html';
     populateGuestPage(tapechart);
-    $('.delete-reservation-button-container').show();
+    $('.delete-reservation-button-container').removeClass('hide');
   } else {
     showLoginError();
   }
