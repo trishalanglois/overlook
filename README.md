@@ -12,16 +12,12 @@ To access this repo, simply clone down and run `npm install` to access the neces
 
 ## User Interface and User Experience
 ### Login Screen
-![User and Manager Login Screen](https://imgur.com/vTYygfV.png)
-
 ![Toggle User and Manager Login Fields](https://imgur.com/DBXWw4k.gif)
 
 ### Guest Page
-![Guest Page](https://imgur.com/qFq4TfE.png)
 ![Guest Choosing and Filtering Rooms to Book](https://imgur.com/GqztMO7.gif)
 
 ### Manager Page
-![Manager Page](https://imgur.com/wPe9Tn6.png)
 ![Manager Searching for Guest and Booking Room for Them](https://imgur.com/Ie8D8F0.gif)
 ![Manager Canceling Reservation on Guest's Behalf](https://imgur.com/7V7O4Yf.gif)
 
