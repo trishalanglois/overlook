@@ -8,7 +8,7 @@ The Lucid Hotel is set up with three classes, TapeChart, Guest, and Manager, wit
 
 ## Installation
 
-To access this repo, simply clone down and run `npm install` to access the necessary packages.  For the best viewing experience, run `npm run start` and copy and past your local server into the browswer.
+To access this repo, simply clone down and run `npm install` to access the necessary packages.  For the best viewing experience, run `npm run start` and copy and past your local server into the browser.
 
 ## User Interface and User Experience
 ### Login Screen
